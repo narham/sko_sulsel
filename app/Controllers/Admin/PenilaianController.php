@@ -7,18 +7,18 @@ use CodeIgniter\HTTP\ResponseInterface;
 
 use App\Models\KelasModel;
 use App\Models\SiswaModel;
+use App\Models\JurusanModel;
 
 class PenilaianController extends BaseController
 {
-    protected KelasModel $kelasModel;
-
     protected SiswaModel $siswaModel;
+    protected KelasModel $kelasModel;
+    protected JurusanModel $jurusanModel;
     public function __construct()
     {
-
         $this->siswaModel = new SiswaModel();
-
         $this->kelasModel = new KelasModel();
+        $this->jurusanModel = new JurusanModel();
     }
     public function index()
     {
@@ -26,9 +26,10 @@ class PenilaianController extends BaseController
         $kelas = $this->kelasModel->getAllKelas();
 
         $data = [
-            'title' => 'Data Nilai Siswa',
+            'title' => 'Data Siswa',
             'ctx' => 'penilaian',
-            'kelas' => $kelas
+            'kelas' => $this->kelasModel->getAllKelas(),
+            'jurusan' => $this->jurusanModel->findAll()
         ];
 
         return view('admin/penilaian/penilaian', $data);
@@ -36,20 +37,14 @@ class PenilaianController extends BaseController
 
     public function ambilDataSiswa()
     {
-        // ambil variabel POST
-        $kelas = $this->request->getVar('kelas');
-        $idKelas = $this->request->getVar('id_kelas');
-        $tanggal = $this->request->getVar('tanggal');
+        $kelas = $this->request->getVar('kelas') ?? null;
+        $jurusan = $this->request->getVar('jurusan') ?? null;
 
-        // $lewat = Time::parse($tanggal)->isAfter(Time::today());
-
-        // $result = $this->presensiSiswa->getPresensiByKelasTanggal($idKelas, $tanggal);
+        $result = $this->siswaModel->getAllSiswaWithKelas($kelas, $jurusan);
 
         $data = [
-            'kelas' => $kelas,
-            // 'data' => $result,
-            // 'listKehadiran' => $this->kehadiranModel->getAllKehadiran(),
-            // 'lewat' => $lewat
+            'data' => $result,
+            'empty' => empty($result)
         ];
 
         return view('admin/penilaian/list-nilai-siswa', $data);
