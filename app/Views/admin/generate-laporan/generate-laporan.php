@@ -98,7 +98,7 @@
                      <div class="col-md-6">
                         <div class="card h-100">
                            <form action="<?= base_url('admin/laporan/guru'); ?>" method="post" class="card-body d-flex flex-column">
-                              <h4 class="text-success"><b>Laporan Absen Guru</b></h4>
+                              <h4 class="text-success"><b>Laporan Absen Coach</b></h4>
                               <p>Total jumlah guru : <b><?= count($guru); ?></b></p>
                               <div class="row align-items-center">
                                  <div class="col-auto">

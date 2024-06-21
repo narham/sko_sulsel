@@ -49,6 +49,9 @@ $routes->group('admin', function (RouteCollection $routes) {
    $routes->get('', 'Admin\Dashboard::index');
    $routes->get('dashboard', 'Admin\Dashboard::index');
 
+   // Penilaian Siswa
+   $routes->get('penilaian', 'Admin\PenilaianController::index');
+
    // data kelas & jurusan
    $routes->resource('kelas', ['controller' => 'Admin\KelasController']);
    $routes->resource('jurusan', ['controller' => 'Admin\JurusanController']);
@@ -116,6 +119,82 @@ $routes->group('admin', function (RouteCollection $routes) {
    // superadmin hapus data petugas
    $routes->delete('petugas/delete/(:any)', 'Admin\DataPetugas::delete/$1');
 });
+
+// Users or Ortus
+$routes->group('users', function (RouteCollection $routes) {
+   // Admin dashboard
+   $routes->get('', 'Users\Dashboard::index');
+   $routes->get('dashboard', 'Users\Dashboard::index');
+
+   // // data kelas & jurusan
+   // $routes->resource('kelas', ['controller' => 'Admin\KelasController']);
+   // $routes->resource('jurusan', ['controller' => 'Admin\JurusanController']);
+
+   // // admin lihat data siswa
+   // $routes->get('siswa', 'Admin\DataSiswa::index');
+   // $routes->post('siswa', 'Admin\DataSiswa::ambilDataSiswa');
+   // // admin tambah data siswa
+   // $routes->get('siswa/create', 'Admin\DataSiswa::formTambahSiswa');
+   // $routes->post('siswa/create', 'Admin\DataSiswa::saveSiswa');
+   // // admin edit data siswa
+   // $routes->get('siswa/edit/(:any)', 'Admin\DataSiswa::formEditSiswa/$1');
+   // $routes->post('siswa/edit', 'Admin\DataSiswa::updateSiswa');
+   // // admin hapus data siswa
+   // $routes->delete('siswa/delete/(:any)', 'Admin\DataSiswa::delete/$1');
+
+
+   // // admin lihat data guru
+   // $routes->get('guru', 'Admin\DataGuru::index');
+   // $routes->post('guru', 'Admin\DataGuru::ambilDataGuru');
+   // // admin tambah data guru
+   // $routes->get('guru/create', 'Admin\DataGuru::formTambahGuru');
+   // $routes->post('guru/create', 'Admin\DataGuru::saveGuru');
+   // // admin edit data guru
+   // $routes->get('guru/edit/(:any)', 'Admin\DataGuru::formEditGuru/$1');
+   // $routes->post('guru/edit', 'Admin\DataGuru::updateGuru');
+   // // admin hapus data guru
+   // $routes->delete('guru/delete/(:any)', 'Admin\DataGuru::delete/$1');
+
+
+   // // admin lihat data absen siswa
+   // $routes->get('absen-siswa', 'Admin\DataAbsenSiswa::index');
+   // $routes->post('absen-siswa', 'Admin\DataAbsenSiswa::ambilDataSiswa'); // ambil siswa berdasarkan kelas dan tanggal
+   // $routes->post('absen-siswa/kehadiran', 'Admin\DataAbsenSiswa::ambilKehadiran'); // ambil kehadiran siswa
+   // $routes->post('absen-siswa/edit', 'Admin\DataAbsenSiswa::ubahKehadiran'); // ubah kehadiran siswa
+
+   // $routes->post('tambah-kelas', 'Admin\DataAbsenSiswa::tambahKelas'); // tambah data kelas
+
+   // // admin lihat data absen guru
+   // $routes->get('absen-guru', 'Admin\DataAbsenGuru::index');
+   // $routes->post('absen-guru', 'Admin\DataAbsenGuru::ambilDataGuru'); // ambil guru berdasarkan tanggal
+   // $routes->post('absen-guru/kehadiran', 'Admin\DataAbsenGuru::ambilKehadiran'); // ambil kehadiran guru
+   // $routes->post('absen-guru/edit', 'Admin\DataAbsenGuru::ubahKehadiran'); // ubah kehadiran guru
+
+   // // admin generate QR
+   // $routes->get('generate', 'Admin\GenerateQR::index');
+   // $routes->post('generate/siswa-by-kelas', 'Admin\GenerateQR::getSiswaByKelas');
+
+   // $routes->post('generate/siswa', 'Admin\QRGenerator::generateQrSiswa');
+   // $routes->post('generate/guru', 'Admin\QRGenerator::generateQrGuru');
+
+   // // admin buat laporan
+   // $routes->get('laporan', 'Admin\GenerateLaporan::index');
+   // $routes->post('laporan/siswa', 'Admin\GenerateLaporan::generateLaporanSiswa');
+   // $routes->post('laporan/guru', 'Admin\GenerateLaporan::generateLaporanGuru');
+
+   // // superadmin lihat data petugas
+   // $routes->get('petugas', 'Admin\DataPetugas::index');
+   // $routes->post('petugas', 'Admin\DataPetugas::ambilDataPetugas');
+   // // superadmin tambah data petugas
+   // $routes->get('petugas/register', 'Admin\DataPetugas::registerPetugas');
+   // // superadmin edit data petugas
+   // $routes->get('petugas/edit/(:any)', 'Admin\DataPetugas::formEditPetugas/$1');
+   // $routes->post('petugas/edit', 'Admin\DataPetugas::updatePetugas');
+   // // superadmin hapus data petugas
+   // $routes->delete('petugas/delete/(:any)', 'Admin\DataPetugas::delete/$1');
+});
+
+
 
 
 /*

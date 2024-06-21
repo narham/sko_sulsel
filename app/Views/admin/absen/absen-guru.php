@@ -16,7 +16,7 @@
                <div class="col">
                   <div class="pt-3 pl-3">
                      <h4><b>Absen Coach</b></h4>
-                     <p>Daftar guru muncul disini</p>
+                     <p>Daftar Coach muncul disini</p>
                   </div>
                </div>
                <div class="col-sm-auto">

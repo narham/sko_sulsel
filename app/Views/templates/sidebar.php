@@ -3,6 +3,7 @@ $context = $ctx ?? 'dashboard';
 switch ($context) {
    case 'absen-siswa':
    case 'siswa':
+   case 'penilaian':
    case 'kelas':
       $sidebarColor = 'purple';
       break;
@@ -45,12 +46,18 @@ switch ($context) {
                <p>Absensi Siswa</p>
             </a>
          </li>
-         <li class="nav-item <?= $context == 'absen-guru' ? 'active' : ''; ?>">
+         <li class="nav-item <?= $context == 'penilaian' ? 'active' : ''; ?>">
+            <a class="nav-link" href="<?= base_url('admin/penilaian'); ?>">
+               <i class="material-icons">checklist</i>
+               <p>Penilain Siswa</p>
+            </a>
+         </li>
+         <!-- <li class="nav-item <?= $context == 'absen-guru' ? 'active' : ''; ?>">
             <a class="nav-link" href="<?= base_url('admin/absen-guru'); ?>">
                <i class="material-icons">checklist</i>
                <p>Absensi Coach</p>
             </a>
-         </li>
+         </li> -->
          <li class="nav-item <?= $context == 'siswa' ? 'active' : ''; ?>">
             <a class="nav-link" href="<?= base_url('admin/siswa'); ?>">
                <i class="material-icons">person</i>

@@ -5,7 +5,7 @@
    <tr>
       <td><img src="<?= base_url('public/assets/img/logo_sekolah.png'); ?>" width="100px" height="100px"></img></td>
       <td width="100%">
-         <h2 align="center">DAFTAR HADIR GURU</h2>
+         <h2 align="center">DAFTAR HADIR COACH</h2>
          <h4 align="center">SMANKO SULSEL CABOR SEPAKBOLA</h4>
          <h4 align="center">TAHUN PELAJARAN 2022/2023</h4>
       </td>
