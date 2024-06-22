@@ -90,7 +90,6 @@ class PresensiSiswaModel extends Model implements PresensiInterface
          "tb_presensi_siswa.id_siswa = tb_siswa.id_siswa AND tb_presensi_siswa.tanggal = '$tanggal'",
          'right'
       );
-
       if ($idKehadiran == '4') {
          $result = $this->findAll();
 
