@@ -26,27 +26,16 @@ class PenilaianController extends BaseController
         $kelas = $this->kelasModel->getAllKelas();
 
         $data = [
-            'title' => 'Data Siswa',
-            'ctx' => 'penilaian',
-            'kelas' => $this->kelasModel->getAllKelas(),
-            'jurusan' => $this->jurusanModel->findAll()
+            'title' => 'Data Nilai Siswa',
+            'ctx' => 'nilai-siswa',
+            'kelas' => $kelas
         ];
+
 
         return view('admin/penilaian/penilaian', $data);
     }
 
     public function ambilDataSiswa()
     {
-        $kelas = $this->request->getVar('kelas') ?? null;
-        $jurusan = $this->request->getVar('jurusan') ?? null;
-
-        $result = $this->siswaModel->getAllSiswaWithKelas($kelas, $jurusan);
-
-        $data = [
-            'data' => $result,
-            'empty' => empty($result)
-        ];
-
-        return view('admin/penilaian/list-nilai-siswa', $data);
     }
 }

@@ -21,7 +21,8 @@ class App extends BaseConfig
      * explicitly and never rely on auto-guessing, especially in production
      * environments.
      */
-    public string $baseURL = 'http://localhost/absensi-sekolah-qr-code/';
+    public string $baseURL = 'http://localhost/absen_sko/';
+    // public string $baseURL = 'http://localhost/absensi-sekolah-qr-code/';
     // Using php spark serve
     // public string $baseURL = 'http://localhost:8080/';
 
