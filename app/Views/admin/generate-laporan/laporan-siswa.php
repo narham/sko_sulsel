@@ -20,7 +20,9 @@
    <tr>
       <td></td>
       <td></td>
-      <td colspan="<?= count($tanggal); ?>"><b>Hari/Tanggal</b></td>
+      <td colspan="<?= count($tanggal); ?>"><b>
+            <center>Hari/Tanggal</center>
+         </b></td>
    </tr>
    <tr>
       <td></td>
@@ -44,12 +46,16 @@
          <td align="center"><?= $i + 1; ?></td>
          <td><?= $siswa['nama_siswa']; ?></td>
          <?php foreach ($listAbsen as $absen) : ?>
+            <!-- <?= $absen[$i]['id_kehadiran'] ?? ($absen['lewat'] ? 5 : 4); ?> -->
             <?= kehadiran($absen[$i]['id_kehadiran'] ?? ($absen['lewat'] ? 5 : 4)); ?>
          <?php endforeach; ?>
       </tr>
    <?php
       $i++;
+   // dd($listAbsen);
+   // dd($listSiswa);
    endforeach; ?>
+
 
 </table>
 <br></br>

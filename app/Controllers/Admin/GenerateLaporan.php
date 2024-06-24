@@ -61,6 +61,7 @@ class GenerateLaporan extends BaseController
    {
       $idKelas = $this->request->getVar('kelas');
       $siswa = $this->siswaModel->getSiswaByKelas($idKelas);
+      // $siswa = $this->siswaModel->getSiswaByKelas($idKelas);
       $type = $this->request->getVar('type');
 
       if (empty($siswa)) {
@@ -122,6 +123,9 @@ class GenerateLaporan extends BaseController
          'kelas' => $kelas,
          'grup' => "kelas " . $kelas['kelas'] . " " . $kelas['jurusan']
       ];
+
+      // dd($data);
+      // var_dump($data);
 
 
       if ($type == 'doc') {

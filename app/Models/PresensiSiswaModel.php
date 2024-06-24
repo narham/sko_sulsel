@@ -70,15 +70,15 @@ class PresensiSiswaModel extends Model implements PresensiInterface
          ->join(
             "(SELECT id_presensi, id_siswa AS id_siswa_presensi, tanggal, jam_masuk, jam_keluar, id_kehadiran, keterangan FROM tb_presensi_siswa)tb_presensi_siswa",
             "{$this->table}.id_siswa = tb_presensi_siswa.id_siswa_presensi AND tb_presensi_siswa.tanggal = '$tanggal'",
-            'left'
+            'LEFT'
          )
          ->join(
             'tb_kehadiran',
             'tb_presensi_siswa.id_kehadiran = tb_kehadiran.id_kehadiran',
-            'left'
+            'LEFT'
          )
          ->where("{$this->table}.id_kelas = $idKelas")
-         ->orderBy("nama_siswa")
+         ->orderBy("id_siswa")
          // ->find();
          ->findAll();
    }
@@ -90,13 +90,13 @@ class PresensiSiswaModel extends Model implements PresensiInterface
          "tb_presensi_siswa.id_siswa = tb_siswa.id_siswa AND tb_presensi_siswa.tanggal = '$tanggal'",
          'right'
       );
-      if ($idKehadiran == '4') {
+      if ($idKehadiran == '1') {
          $result = $this->findAll();
 
          $filteredResult = [];
 
          foreach ($result as $value) {
-            if ($value['id_kehadiran'] != ('1' || '2' || '3')) {
+            if ($value['id_kehadiran'] != ('2' || '3' || '4')) {
                array_push($filteredResult, $value);
             }
          }
