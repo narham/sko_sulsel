@@ -90,13 +90,13 @@ class PresensiSiswaModel extends Model implements PresensiInterface
          "tb_presensi_siswa.id_siswa = tb_siswa.id_siswa AND tb_presensi_siswa.tanggal = '$tanggal'",
          'right'
       );
-      if ($idKehadiran == '1') {
+      if ($idKehadiran == '4') {
          $result = $this->findAll();
 
          $filteredResult = [];
 
          foreach ($result as $value) {
-            if ($value['id_kehadiran'] != ('2' || '3' || '4')) {
+            if ($value['id_kehadiran'] != ('1' || '2' || '3')) {
                array_push($filteredResult, $value);
             }
          }

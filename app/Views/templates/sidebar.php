@@ -47,7 +47,7 @@ switch ($context) {
             </a>
          </li>
          <li class="nav-item <?= $context == 'penilaian' ? 'active' : ''; ?>">
-            <a class="nav-link" href="<?= base_url('admin/penilaian'); ?>">
+            <a class="nav-link" href="<?= base_url('admin/nilai-siswa'); ?>">
                <i class="material-icons">checklist</i>
                <p>Penilain Siswa</p>
             </a>

@@ -49,8 +49,14 @@ $routes->group('admin', function (RouteCollection $routes) {
    $routes->get('', 'Admin\Dashboard::index');
    $routes->get('dashboard', 'Admin\Dashboard::index');
 
-   // Penilaian Siswa
-   $routes->get('penilaian', 'Admin\PenilaianController::index');
+   // admin lihat data nilai  siswa
+   // $routes->get('nilai-siswa', 'Admin\PenilaianController::index');
+   $routes->get('nilai-siswa', 'Admin\PenilaianController::index');
+   $routes->post('nilai-siswa', 'Admin\PenilaianController::ambilDataSiswa'); // ambil siswa berdasarkan kelas dan tanggal
+   $routes->post('nilai-siswa/penilaian', 'Admin\PenilaianController::ambil_nilai'); // ambil nilai siswa
+   // $routes->post('nilai-siswa/edit', 'Admin\PenilaianController::ubah_nilai'); // ubah kehadiran siswa
+
+   $routes->post('tambah-kelas', 'Admin\DataAbsenSiswa::tambahKelas'); // tambah data kelas
 
    // data kelas & jurusan
    $routes->resource('kelas', ['controller' => 'Admin\KelasController']);
@@ -89,6 +95,7 @@ $routes->group('admin', function (RouteCollection $routes) {
    $routes->post('absen-siswa/edit', 'Admin\DataAbsenSiswa::ubahKehadiran'); // ubah kehadiran siswa
 
    $routes->post('tambah-kelas', 'Admin\DataAbsenSiswa::tambahKelas'); // tambah data kelas
+
 
    // admin lihat data absen guru
    $routes->get('absen-guru', 'Admin\DataAbsenGuru::index');
