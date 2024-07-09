@@ -99,9 +99,9 @@ class KelasController extends ResourceController
 
         // ambil variabel POST
         $kelas = $this->request->getVar('kelas');
-        $idJurusan = $this->request->getVar('idJurusan');
+        $idjurusan = $this->request->getVar('idJurusan');
 
-        $result = $this->kelasModel->tambahKelas($kelas, $idJurusan);
+        $result = $this->kelasModel->tambahKelas($kelas, $idjurusan);
 
         if ($result) {
             session()->setFlashdata([

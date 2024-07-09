@@ -116,11 +116,11 @@ class DataSiswa extends BaseController
       $namsiswa = $this->request->getVar('nama');
       $tlahir = $this->request->getVar('tlahir');
       $tglahir = $this->request->getVar('tglahir');
-      $idKelas = intval($this->request->getVar('id_kelas'));
-      $jenisKelamin = $this->request->getVar('jk');
+      $idkelas = intval($this->request->getVar('id_kelas'));
+      $jeniskelamin = $this->request->getVar('jk');
       $noHp = $this->request->getVar('no_hp');
 
-      $result = $this->siswaModel->saveSiswa(NULL, $nis, $nik, $namsiswa, $tlahir, $tglahir, $idKelas, $jenisKelamin, $noHp);
+      $result = $this->siswaModel->saveSiswa(NULL, $nis, $nik, $namsiswa, $tlahir, $tglahir, $idkelas, $jeniskelamin, $noHp);
 
       if ($result) {
          session()->setFlashdata([
@@ -158,17 +158,17 @@ class DataSiswa extends BaseController
 
    public function updateSiswa()
    {
-      $idSiswa = $this->request->getVar('id');
+      $idsiswa = $this->request->getVar('id');
 
-      $siswaLama = $this->siswaModel->getSiswaById($idSiswa);
+      $siswalama = $this->siswaModel->getSiswaById($idsiswa);
 
-      if ($siswaLama['nis'] != $this->request->getVar('nis')) {
+      if ($siswalama['nis'] != $this->request->getVar('nis')) {
          $this->siswaValidationRules['nis']['rules'] = 'required|max_length[20]|min_length[4]|is_unique[tb_siswa.nis]';
       }
 
       // validasi
       if (!$this->validate($this->siswaValidationRules)) {
-         $siswa = $this->siswaModel->getSiswaById($idSiswa);
+         $siswa = $this->siswaModel->getSiswaById($idsiswa);
          $kelas = $this->kelasModel->getAllKelas();
 
          $data = [
@@ -184,14 +184,14 @@ class DataSiswa extends BaseController
 
       $nik = $this->request->getVar('nik');
       $nis = $this->request->getVar('nis');
-      $namaSiswa = $this->request->getVar('nama');
+      $namasiswa = $this->request->getVar('nama');
       $tlahir = $this->request->getVar('tlahir');
       $tglahir = $this->request->getVar('tglahir');
-      $idKelas = intval($this->request->getVar('id_kelas'));
-      $jenisKelamin = $this->request->getVar('jk');
+      $idkelas = intval($this->request->getVar('id_kelas'));
+      $jeniskelamin = $this->request->getVar('jk');
       $noHp = $this->request->getVar('no_hp');
 
-      $result = $this->siswaModel->saveSiswa($idSiswa, $nis, $nik, $namaSiswa, $tlahir, $tglahir, $idKelas, $jenisKelamin, $noHp);
+      $result = $this->siswaModel->saveSiswa($idsiswa, $nis, $nik, $namasiswa, $tlahir, $tglahir, $idkelas, $jeniskelamin, $noHp);
 
       if ($result) {
          session()->setFlashdata([
@@ -205,7 +205,7 @@ class DataSiswa extends BaseController
          'msg' => 'Gagal mengubah data',
          'error' => true
       ]);
-      return redirect()->to('/admin/siswa/edit/' . $idSiswa);
+      return redirect()->to('/admin/siswa/edit/' . $idsiswa);
    }
 
    public function delete($id)
