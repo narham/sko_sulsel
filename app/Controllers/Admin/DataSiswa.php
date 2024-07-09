@@ -114,11 +114,13 @@ class DataSiswa extends BaseController
       $nis = $this->request->getVar('nis');
       $nik = $this->request->getVar('nik');
       $namaSiswa = $this->request->getVar('nama');
+      $tlahir = $this->request->getVar('tlahir');
+      $tglahir = $this->request->getVar('tglahir');
       $idKelas = intval($this->request->getVar('id_kelas'));
       $jenisKelamin = $this->request->getVar('jk');
       $noHp = $this->request->getVar('no_hp');
 
-      $result = $this->siswaModel->saveSiswa(NULL, $nis, $nik, $namaSiswa, $idKelas, $jenisKelamin, $noHp);
+      $result = $this->siswaModel->saveSiswa(NULL, $nis, $nik, $namaSiswa, $tlahir, $tglahir, $idKelas, $jenisKelamin, $noHp);
 
       if ($result) {
          session()->setFlashdata([
@@ -183,11 +185,13 @@ class DataSiswa extends BaseController
       $nik = $this->request->getVar('nik');
       $nis = $this->request->getVar('nis');
       $namaSiswa = $this->request->getVar('nama');
+      $tlahir = $this->request->getVar('tlahir');
+      $tglahir = $this->request->getVar('tglahir');
       $idKelas = intval($this->request->getVar('id_kelas'));
       $jenisKelamin = $this->request->getVar('jk');
       $noHp = $this->request->getVar('no_hp');
 
-      $result = $this->siswaModel->saveSiswa($idSiswa, $nis, $nik, $namaSiswa, $idKelas, $jenisKelamin, $noHp);
+      $result = $this->siswaModel->saveSiswa($idSiswa, $nis, $nik, $namaSiswa, $tlahir, $tglahir, $idKelas, $jenisKelamin, $noHp);
 
       if ($result) {
          session()->setFlashdata([

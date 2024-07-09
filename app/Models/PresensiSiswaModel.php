@@ -8,6 +8,7 @@ use CodeIgniter\Model;
 use App\Libraries\enums\Kehadiran;
 
 class PresensiSiswaModel extends Model implements PresensiInterface
+
 {
    protected $primaryKey = 'id_presensi';
 
