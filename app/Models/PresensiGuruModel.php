@@ -56,9 +56,9 @@ class PresensiGuruModel extends Model implements PresensiInterface
       return $this->where(['id_guru' => $idGuru, 'tanggal' => $date])->first();
    }
 
-   public function getPresensiById(string $idPresensi)
+   public function getPresensiById(string $idpresensi)
    {
-      return $this->where([$this->primaryKey => $idPresensi])->first();
+      return $this->where([$this->primaryKey => $idpresensi])->first();
    }
 
    public function getPresensiByTanggal($tanggal)
@@ -79,7 +79,7 @@ class PresensiGuruModel extends Model implements PresensiInterface
          ->findAll();
    }
 
-   public function getPresensiByKehadiran(string $idKehadiran, $tanggal)
+   public function getPresensiByKehadiran(string $idkehadiran, $tanggal)
    {
       $this->join(
          'tb_guru',
@@ -87,7 +87,7 @@ class PresensiGuruModel extends Model implements PresensiInterface
          'right'
       );
 
-      if ($idKehadiran == '4') {
+      if ($idkehadiran == '4') {
          $result = $this->findAll();
 
          $filteredResult = [];
@@ -100,18 +100,18 @@ class PresensiGuruModel extends Model implements PresensiInterface
 
          return $filteredResult;
       } else {
-         $this->where(['tb_presensi_guru.id_kehadiran' => $idKehadiran]);
+         $this->where(['tb_presensi_guru.id_kehadiran' => $idkehadiran]);
          return $this->findAll();
       }
    }
 
    public function updatePresensi(
-      $idPresensi,
+      $idpresensi,
       $idGuru,
       $tanggal,
-      $idKehadiran,
-      $jamMasuk,
-      $jamKeluar,
+      $idkehadiran,
+      $jammasuk,
+      $jamkeluar,
       $keterangan
    ) {
       $presensi = $this->getPresensiByIdGuruTanggal($idGuru, $tanggal);
@@ -119,20 +119,20 @@ class PresensiGuruModel extends Model implements PresensiInterface
       $data = [
          'id_guru' => $idGuru,
          'tanggal' => $tanggal,
-         'id_kehadiran' => $idKehadiran,
+         'id_kehadiran' => $idkehadiran,
          'keterangan' => $keterangan ?? $presensi['keterangan'] ?? ''
       ];
 
-      if ($idPresensi != null) {
-         $data[$this->primaryKey] = $idPresensi;
+      if ($idpresensi != null) {
+         $data[$this->primaryKey] = $idpresensi;
       }
 
-      if ($jamMasuk != null) {
-         $data['jam_masuk'] = $jamMasuk;
+      if ($jammasuk != null) {
+         $data['jam_masuk'] = $jammasuk;
       }
 
-      if ($jamKeluar != null) {
-         $data['jam_keluar'] = $jamKeluar;
+      if ($jamkeluar != null) {
+         $data['jam_keluar'] = $jamkeluar;
       }
 
       return $this->save($data);

@@ -18,6 +18,6 @@ interface PresensiInterface
   public function cekAbsen(string|int $id, string|Time $date);
   public function absenMasuk(string $id, $date, $time);
   public function absenKeluar(string $id, $time);
-  public function getPresensiById(string $idPresensi);
-  public function getPresensiByKehadiran(string $idKehadiran, $tanggal);
+  public function getPresensiById(string $idpresensi);
+  public function getPresensiByKehadiran(string $idkehadiran, $tanggal);
 }

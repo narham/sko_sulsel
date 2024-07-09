@@ -129,9 +129,9 @@ class JurusanController extends ResourceController
         $jurusan = $this->jurusanModel->where(['id' => $id])->first();
 
         // ambil variabel POST
-        $namaJurusan = $this->request->getRawInputVar('jurusan');
+        $namajurusan = $this->request->getRawInputVar('jurusan');
 
-        if ($jurusan['jurusan'] != $namaJurusan && !$this->validate([
+        if ($jurusan['jurusan'] != $namajurusan && !$this->validate([
             'jurusan' => [
                 'rules' => 'required|max_length[32]|is_unique[tb_jurusan.jurusan]',
             ],
@@ -151,7 +151,7 @@ class JurusanController extends ResourceController
         }
 
         $result = $this->jurusanModel->update($id, [
-            'jurusan' => $namaJurusan
+            'jurusan' => $namajurusan
         ]);
 
         if ($result) {

@@ -9,15 +9,15 @@ class SiswaModel extends Model
    protected function initialize()
    {
       $this->allowedFields = [
-         'nis',
-         'nik',
-         'nama_siswa',
-         'tlahir',
-         'tglahir',
-         'id_kelas',
-         'jenis_kelamin',
-         'no_hp',
-         'unique_code'
+         'nis', // NIS
+         'nik', // NIK
+         'nama_siswa', // Nama Lengkap
+         'tlahir', // Tempat Lahir
+         'tglahir', // Tanggal Lahir
+         'id_kelas', // ID Kelas
+         'jenis_kelamin', // Jenis Kelamain
+         'no_hp', // No Handphone
+         'unique_code' // Unique Code 
       ];
    }
 
@@ -80,19 +80,19 @@ class SiswaModel extends Model
          ->where(['tb_siswa.id_kelas' => $id_kelas])->findAll();
    }
 
-   public function saveSiswa($idSiswa, $nis, $nik, $namaSiswa, $tlahir, $tglahir, $idKelas, $jenisKelamin, $noHp)
+   public function saveSiswa($idsiswa, $nis, $nik, $namasiswa, $tlahir, $tglahir, $idkelas, $jeniskelamin, $noHp)
    {
       return $this->save([
-         $this->primaryKey => $idSiswa,
+         $this->primaryKey => $idsiswa,
          'nis' => $nis,
          'nik' => $nik,
-         'nama_siswa' => $namaSiswa,
-         'tlahir' => $tlahir,
-         'tglahir' => $tglahir,
-         'id_kelas' => $idKelas,
-         'jenis_kelamin' => $jenisKelamin,
+         'nama_siswa' => $namasiswa,
+         'tlahir' => $tlahir, // Tempat Lahir
+         'tglahir' => $tglahir, //Tanggal Lahir
+         'id_kelas' => $idkelas, // ID Kelas
+         'jenis_kelamin' => $jeniskelamin,
          'no_hp' => $noHp,
-         'unique_code' => sha1($namaSiswa . md5($nik . $tlahir . $noHp . $namaSiswa)) . substr(sha1($nik . $tglahir . rand(0, 100)), 0, 24)
+         'unique_code' => sha1($namasiswa . md5($nik . $tlahir . $namasiswa)) . substr(sha1($nik . $tglahir . rand(0, 100)), 0, 24)
       ]);
    }
 }

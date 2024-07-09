@@ -42,9 +42,9 @@ class GenerateQR extends BaseController
 
    public function getSiswaByKelas()
    {
-      $idKelas = $this->request->getVar('idKelas');
+      $idkelas = $this->request->getVar('idKelas');
 
-      $siswa = $this->siswaModel->getSiswaByKelas($idKelas);
+      $siswa = $this->siswaModel->getSiswaByKelas($idkelas);
 
       return $this->response->setJSON($siswa);
    }

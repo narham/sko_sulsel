@@ -27,11 +27,11 @@ class Dashboard extends BaseController
    public function __construct()
    {
       $this->siswaModel = new SiswaModel();
-      // $this->guruModel = new GuruModel();
+      $this->guruModel = new GuruModel();
       $this->KelasModel = new KelasModel();
       $this->presensiSiswaModel = new PresensiSiswaModel();
-      // $this->presensiGuruModel = new PresensiGuruModel();
-      // $this->petugasModel = new PetugasModel();
+      $this->presensiGuruModel = new PresensiGuruModel();
+      $this->petugasModel = new PetugasModel();
    }
 
    public function index()

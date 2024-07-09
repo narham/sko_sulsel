@@ -56,11 +56,11 @@ class DataAbsenGuru extends BaseController
 
    public function ambilKehadiran()
    {
-      $idPresensi = $this->request->getVar('id_presensi');
+      $idpresensi = $this->request->getVar('id_presensi');
       $idGuru = $this->request->getVar('id_guru');
 
       $data = [
-         'presensi' => $this->presensiGuru->getPresensiById($idPresensi),
+         'presensi' => $this->presensiGuru->getPresensiById($idpresensi),
          'listKehadiran' => $this->kehadiranModel->getAllKehadiran(),
          'data' => $this->guruModel->getGuruById($idGuru)
       ];
@@ -71,11 +71,11 @@ class DataAbsenGuru extends BaseController
    public function ubahKehadiran()
    {
       // ambil variabel POST
-      $idKehadiran = $this->request->getVar('id_kehadiran');
+      $idkehadiran = $this->request->getVar('id_kehadiran');
       $idGuru = $this->request->getVar('id_guru');
       $tanggal = $this->request->getVar('tanggal');
-      $jamMasuk = $this->request->getVar('jam_masuk');
-      $jamKeluar = $this->request->getVar('jam_keluar');
+      $jammasuk = $this->request->getVar('jam_masuk');
+      $jamkeluar = $this->request->getVar('jam_keluar');
       $keterangan = $this->request->getVar('keterangan');
 
       $cek = $this->presensiGuru->cekAbsen($idGuru, $tanggal);
@@ -84,9 +84,9 @@ class DataAbsenGuru extends BaseController
          $cek == false ? NULL : $cek,
          $idGuru,
          $tanggal,
-         $idKehadiran,
-         $jamMasuk ?? NULL,
-         $jamKeluar ?? NULL,
+         $idkehadiran,
+         $jammasuk ?? NULL,
+         $jamkeluar ?? NULL,
          $keterangan
       );
 

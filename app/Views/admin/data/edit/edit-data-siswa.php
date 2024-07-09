@@ -50,6 +50,20 @@
                            <?= $validation->getError('nama'); ?>
                         </div>
                      </div>
+                     <div class="form-group mt-4">
+                        <label for="nama">Tempat Lahir</label>
+                        <input type="text" id="tlahir" class="form-control <?= $validation->getError('tlahir') ? 'is-invalid' : ''; ?>" name="tlahir" value="<?= old('tlahir') ?? $oldInput['tlahir']  ?? '' ?>" required>
+                        <div class="invalid-feedback">
+                           <?= $validation->getError('tlahir'); ?>
+                        </div>
+                     </div>
+                     <div class="form-group mt-4">
+                        <label for="nama">Tanggal Lahir</label>
+                        <input type="date" id="tglahir" class="form-control <?= $validation->getError('tglahir') ? 'is-invalid' : ''; ?>" name="tglahir" value="<?= old('tglahir') ?? $oldInput['tglahir']  ?? '' ?>" required>
+                        <div class="invalid-feedback">
+                           <?= $validation->getError('tglahir'); ?>
+                        </div>
+                     </div>
                      <div class="row">
                         <div class="col-md-6">
                            <label for="kelas">Kelas</label>
